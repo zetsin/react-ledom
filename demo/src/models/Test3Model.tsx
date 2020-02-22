@@ -6,6 +6,9 @@ export default class Test3Model extends Model<Test3Model> {
   value: Number = Date.now();
   
   refresh = async () => {
+    // await fetch("xxx", Test1State.value)
+    // await fetch("xxx", Test2State.value)
+
     await Test1State.refresh();
     await Test2State.refresh();
   }

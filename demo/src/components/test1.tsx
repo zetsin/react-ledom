@@ -10,7 +10,6 @@ const Test1: FC = () => {
       <h2>Test1</h2>
       <p>value: {test1.value}</p>
       <button onClick={() => {
-        console.log(test1)
         test1.refresh()
       }}>Refresh</button>
       <p>random( when Test1Model changed ): {Math.random()}</p>
