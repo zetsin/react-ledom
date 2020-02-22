@@ -9,5 +9,6 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "strict": true
-  }
+  },
+  "include": ["src/**/*"]
 }

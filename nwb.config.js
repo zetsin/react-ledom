@@ -6,7 +6,10 @@ module.exports = {
   },
   webpack: {
     extra: {
-      entry: './demo/src/index',
+      entry: {
+        demo: './demo/src/index',
+        app: './src/index',
+      },
       resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },

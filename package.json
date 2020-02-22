@@ -11,7 +11,9 @@
     "umd"
   ],
   "scripts": {
-    "build": "nwb build-react-component",
+    "build": "npm run build:ts && npm run build:component",
+    "build:component": "nwb build-react-component",
+    "build:ts": "tsc",
     "clean": "nwb clean-module && nwb clean-demo",
     "prepublishOnly": "npm run build",
     "start": "nwb serve-react-demo",
@@ -35,5 +37,10 @@
   "homepage": "https://github.com/zetsin/react-ledom",
   "license": "MIT",
   "repository": "",
-  "keywords": ["react", "model", "state-management", "react-hooks"]
+  "keywords": [
+    "react",
+    "model",
+    "state-management",
+    "react-hooks"
+  ]
 }
