@@ -1,7 +1,7 @@
 {
-  "name": "react-modelz",
+  "name": "react-ledom",
   "version": "1.0.0",
-  "description": "react-modelz React component",
+  "description": "The State management library for React",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -19,20 +19,21 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
+    "@types/react": "^16.9.22",
+    "@types/react-dom": "^16.9.5",
     "nwb": "0.23.x",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.2"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Zetsin <zetsin@gmail.com>",
+  "homepage": "https://github.com/zetsin/react-ledom",
   "license": "MIT",
   "repository": "",
-  "keywords": [
-    "react-component"
-  ]
+  "keywords": ["react", "model", "state-management", "react-hooks"],
 }
