@@ -35,5 +35,5 @@
   "homepage": "https://github.com/zetsin/react-ledom",
   "license": "MIT",
   "repository": "",
-  "keywords": ["react", "model", "state-management", "react-hooks"],
+  "keywords": ["react", "model", "state-management", "react-hooks"]
 }
