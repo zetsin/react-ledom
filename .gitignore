@@ -3,5 +3,3 @@
 /node_modules
 /umd
 npm-debug.log*
-/dist/demo
-/dist/src
