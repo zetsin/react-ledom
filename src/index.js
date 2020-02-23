@@ -9,7 +9,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 export var Store = new Map();
 var Model = /** @class */ (function () {
     function Model() {
@@ -26,7 +26,7 @@ export { Model };
 ;
 var ContextProvider = function (_a) {
     var context = _a.context, value = _a.value, children = _a.children;
-    var _b = React.useState(value), state = _b[0], setState = _b[1];
+    var _b = useState(value), state = _b[0], setState = _b[1];
     Store.set(value.constructor, {
         context: context,
         setState: setState
@@ -60,4 +60,3 @@ export var useModel = function (model) {
     }
     return useContext(context);
 };
-//# sourceMappingURL=index.js.map

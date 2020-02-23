@@ -1,8 +1,8 @@
-import React, { Context, createContext, useContext, FC, ReactElement, Dispatch } from 'react'
+import React, { Context, createContext, useContext, FC, ReactElement, Dispatch, SetStateAction, useState } from 'react'
 
 export const Store = new Map<Function, {
   context: Context<Model>,
-  setState: Dispatch<React.SetStateAction<Model>>
+  setState: Dispatch<SetStateAction<Model>>
 }>();
 
 export abstract class Model<T = any> {
@@ -22,7 +22,7 @@ const ContextProvider: FC<{
   value,
   children,
 }) => {
-  const [ state, setState ] = React.useState(value);
+  const [ state, setState ] = useState(value);
   Store.set(value.constructor, {
     context,
     setState

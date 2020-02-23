@@ -4,6 +4,7 @@
   "description": "The State management library for React",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "types": "src/index.d.ts",
   "files": [
     "css",
     "es",
@@ -11,8 +12,8 @@
     "umd"
   ],
   "scripts": {
-    "build": "npm run build:ts && npm run build:component",
-    "build:component": "nwb build-react-component",
+    "build": "npm run build:ts && npm run build:nwb",
+    "build:nwb": "nwb build-react-component",
     "build:ts": "tsc",
     "clean": "nwb clean-module && nwb clean-demo",
     "prepublishOnly": "npm run build",
