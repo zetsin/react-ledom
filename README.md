@@ -7,7 +7,7 @@ The State management library for React
 ⚔ Fully TypeScript Support
 
 ```tsx
-import { Model } from 'react-model'
+import { Model } from 'react-ledom'
 
 // define model
 class TestModel extends Model<TestModel> {
@@ -82,7 +82,7 @@ The [`Provider`](https://reactjs.org/docs/context.html#contextprovider) React co
 ```tsx
 import React, { FC } from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-model'
+import { Provider } from 'react-ledom'
 
 const Demo: FC = () => {
   return (
@@ -102,7 +102,7 @@ A helper for using [`useContext`](https://reactjs.org/docs/hooks-reference.html#
 
 ```tsx
 import React, { FC } from 'react'
-import { useModel } from 'react-model';
+import { useModel } from 'react-ledom';
 import Test1Model from '../models/Test1Model';
 
 const Test1: FC = () => {
@@ -128,7 +128,7 @@ The [`Cousumer`](https://reactjs.org/docs/context.html#contextconsumer) React co
 
 ```tsx
 import React, { FC } from 'react'
-import { Consumer } from 'react-model';
+import { Consumer } from 'react-ledom';
 import Test1Model from '../models/Test1Model';
 import Test2Model from '../models/Test2Model';
 
@@ -175,7 +175,7 @@ export default Test1or2;
 You can use other model instance's values and methods directly.
 
 ```tsx
-import { Model } from "react-model";
+import { Model } from "react-ledom";
 import { Test1State } from "./Test1Model"
 import { Test2State } from "./Test2Model"
 
@@ -199,7 +199,7 @@ export const Test3State = new Test3Model();
 ### State persistence
 
 ```tsx
-import { Model } from "react-model";
+import { Model } from "react-ledom";
 
 export default abstract class Ledom<T> extends Model<T> {
   constructor() {
