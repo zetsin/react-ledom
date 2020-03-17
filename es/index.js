@@ -16,7 +16,7 @@ var Model = /** @class */function () {
     function Model() {}
     Model.prototype.setState = function (data) {
         var _a;
-        Object.assign(this, data);
+        Object.assign(this.state, data);
         (_a = Store.get(this.constructor)) === null || _a === void 0 ? void 0 : _a.setState(__assign({}, this));
     };
     ;

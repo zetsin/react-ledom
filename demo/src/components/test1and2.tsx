@@ -10,14 +10,14 @@ const Test1and2: FC = () => {
   return (
     <div>
       <h2>Test1</h2>
-      <p>value: {test1.value}</p>
+      <p>value: {test1.state.value}</p>
       <button onClick={() => {
         test1.refresh()
       }}>Refresh</button>
       <p>random( when Test1Model or Test2Model changed ): {Math.random()}</p>
 
       <h2>Test2</h2>
-      <p>value: {test2.value}</p>
+      <p>value: {test2.state.value}</p>
       <button onClick={() => {
         test2.refresh()
       }}>Refresh</button>

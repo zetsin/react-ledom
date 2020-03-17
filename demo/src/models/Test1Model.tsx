@@ -1,7 +1,13 @@
 import { Model } from "../../../src";
 
-export default class Test1Model extends Model<Test1Model> {
-  value: number = Date.now();
+export interface Test1Props {
+  value: number;
+}
+
+export default class Test1Model extends Model<Test1Props> {
+  state = {
+    value: Date.now()
+  }
 
   refresh = async () => {
     this.setState({

@@ -2,8 +2,14 @@ import { Model } from "../../../src";
 import { Test1State } from "./Test1Model"
 import { Test2State } from "./Test2Model"
 
-export default class Test3Model extends Model<Test3Model> {
-  value: Number = Date.now();
+export interface Test3Props {
+  value: number;
+}
+
+export default class Test3Model extends Model<Test3Props> {
+  state = {
+    value: Date.now()
+  }
   
   refresh = async () => {
     // await fetch("xxx", Test1State.value)

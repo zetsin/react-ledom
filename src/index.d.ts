@@ -3,7 +3,11 @@ export declare const Store: Map<Function, {
     context: React.Context<Model<any>>;
     setState: React.Dispatch<React.SetStateAction<Model<any>>>;
 }>;
-export declare abstract class Model<T = any> {
+export interface ModelProps<T = any> {
+    state: T;
+}
+export declare abstract class Model<T = any> implements ModelProps<T> {
+    abstract state: T;
     setState(data?: Partial<T>): void;
 }
 export declare const Provider: FC<{

@@ -8,7 +8,7 @@ const Test2: FC = () => {
   return (
     <div>
       <h2>Test2</h2>
-      <p>value: {test2.value}</p>
+      <p>value: {test2.state.value}</p>
       <button onClick={() => {
         test2.refresh()
       }}>Refresh</button>

@@ -5,9 +5,14 @@ export const Store = new Map<Function, {
   setState: Dispatch<SetStateAction<Model>>
 }>();
 
-export abstract class Model<T = any> {
+export interface ModelProps<T = any> {
+  state: T;
+}
+
+export abstract class Model<T = any> implements ModelProps<T> {
+  abstract state: T;
   setState(data?: Partial<T>) {
-    Object.assign(this, data);
+    Object.assign(this.state, data);
     Store.get(this.constructor)?.setState({
       ...this,
     });

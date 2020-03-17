@@ -9,9 +9,16 @@ The State management library for React
 ```tsx
 import { Model } from 'react-model'
 
+// define state
+interface TestProps {
+  value: number;
+}
+
 // define model
-class TestModel extends Model<TestModel> {
-  value: number = Date.now();
+class TestModel extends Model<TestProps> {
+  state = {
+    value: Date.now()
+  }
 
   refresh = async () => {
     this.setState({
@@ -34,7 +41,7 @@ const App = () => {
 const Test = () => {
   const test = useModel(TestModel)
   return <div>
-    <p>value: {test.value}</p>
+    <p>value: {test.state.value}</p>
     <button onClick={() => {
       test.refresh()
     }}>
@@ -62,8 +69,14 @@ Every model has customized properties and methods.
 ```tsx
 import { Model } from "react-ledom";
 
-export default class Test1Model extends Model<Test1Model> {
-  value: number = Date.now();
+export interface TestProps {
+  value: number;
+}
+
+export default class Test1Model extends Model<TestProps> {
+  state = {
+    value: Date.now();
+  }
 
   refresh = async () => {
     this.setState({
@@ -111,7 +124,7 @@ const Test1: FC = () => {
   return (
     <div>
       <h2>Test1</h2>
-      <p>value: {test1.value}</p>
+      <p>value: {test1.state.value}</p>
       <button onClick={() => {
         test1.refresh()
       }}>Refresh</button>
@@ -140,7 +153,7 @@ const Test1or2: FC = () => {
         {test1 => (
           <>
             <h2>Test1</h2>
-            <p>value: {test1.value}</p>
+            <p>value: {test1.state.value}</p>
             <button onClick={() => {
               test1.refresh()
             }}>Refresh</button>
@@ -179,8 +192,14 @@ import { Model } from "react-model";
 import { Test1State } from "./Test1Model"
 import { Test2State } from "./Test2Model"
 
+export interface TestProps {
+  value: number;
+}
+
 export default class Test3Model extends Model<Test3Model> {
-  value: Number = Date.now();
+  state = {
+    value: Date.now();
+  }
   
   refresh = async () => {
     // await fetch("xxx", Test1State.value)
