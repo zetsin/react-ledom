@@ -16,7 +16,7 @@ interface TestProps {
 
 // define model
 class TestModel extends Model<TestProps> {
-  state = {
+  state: TestProps = {
     value: Date.now()
   }
 
@@ -74,7 +74,7 @@ export interface TestProps {
 }
 
 export default class Test1Model extends Model<TestProps> {
-  state = {
+  state: TestProps = {
     value: Date.now();
   }
 
@@ -196,8 +196,8 @@ export interface TestProps {
   value: number;
 }
 
-export default class Test3Model extends Model<Test3Model> {
-  state = {
+export default class Test3Model extends Model<TestProps> {
+  state: TestProps = {
     value: Date.now();
   }
   
