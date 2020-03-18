@@ -5,7 +5,7 @@ export interface Test4Props {
 }
 
 export default class Test4Model extends Ledom<Test4Props> {
-  state = {
+  state: Test4Props = {
     value: Date.now()
   }
 

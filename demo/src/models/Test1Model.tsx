@@ -5,7 +5,7 @@ export interface Test1Props {
 }
 
 export default class Test1Model extends Model<Test1Props> {
-  state = {
+  state: Test1Props = {
     value: Date.now()
   }
 
