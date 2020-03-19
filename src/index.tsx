@@ -1,6 +1,6 @@
 import React, { Context, createContext, useContext, FC, ReactElement, Dispatch, SetStateAction, useState } from 'react'
 
-export const Store = new Map<Function, {
+export const Stores = new Map<Function, {
   context: Context<Model>,
   setState: Dispatch<SetStateAction<Model>>
 }>();
@@ -9,7 +9,7 @@ export abstract class Model<T = any> {
   readonly abstract state: T;
   setState(data?: Partial<T>) {
     Object.assign(this.state, data);
-    Store.get(this.constructor)?.setState({
+    Stores.get(this.constructor)?.setState({
       ...this,
     });
   };
@@ -24,7 +24,7 @@ const ContextProvider: FC<{
   children,
 }) => {
   const [ state, setState ] = useState(value);
-  Store.set(value.constructor, {
+  Stores.set(value.constructor, {
     context,
     setState
   });
@@ -37,16 +37,16 @@ const ContextProvider: FC<{
 };
 
 export const Provider: FC<{
-  values: Model[],
+  stores: Model[],
 }> = ({
-  values,
+  stores,
   children,
 }) => {
-  return values.map(value => ({
-    context: createContext(value),
-    value
-  })).reduce((acc, {context, value}) => (
-    <ContextProvider context={context} value={value}>
+  return stores.map(store => ({
+    context: createContext(store),
+    store
+  })).reduce((acc, {context, store}) => (
+    <ContextProvider context={context} value={store}>
       {acc}
     </ContextProvider>
   ), (
@@ -58,12 +58,12 @@ export const Provider: FC<{
 
 export const Consumer: <M extends Model>(props: {
   model: new () => M;
-  children: (value: M) => (ReactElement|null);
+  children: (store: M) => (ReactElement|null);
 }) => (ReactElement|null) = ({
   model,
   children,
 }) => {
-  const context = Store.get(model)?.context;
+  const context = Stores.get(model)?.context;
   if(!context) {
     return null;
   }
@@ -76,7 +76,7 @@ export const Consumer: <M extends Model>(props: {
 };
 
 export const useModel: <M extends Model>(model: new () => M) => M = (model) => {
-  const context = Store.get(model)?.context;
+  const context = Stores.get(model)?.context;
   if(!context) {
     throw Error("404");
   }

@@ -1,13 +1,13 @@
 import { Model } from "../../../src";
-import { Test1State } from "./Test1Model"
-import { Test2State } from "./Test2Model"
+import { Test1Store } from "./Test1Model"
+import { Test2Store } from "./Test2Model"
 
-export interface Test3Props {
+export interface Test3State {
   value: number;
 }
 
-export default class Test3Model extends Model<Test3Props> {
-  state: Test3Props = {
+export default class Test3Model extends Model<Test3State> {
+  state: Test3State = {
     value: Date.now()
   }
   
@@ -15,9 +15,9 @@ export default class Test3Model extends Model<Test3Props> {
     // await fetch("xxx", Test1State.value)
     // await fetch("xxx", Test2State.value)
 
-    await Test1State.refresh();
-    await Test2State.refresh();
+    await Test1Store.refresh();
+    await Test2Store.refresh();
   }
 }
 
-export const Test3State = new Test3Model();
+export const Test3Store = new Test3Model();

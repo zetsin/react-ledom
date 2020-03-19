@@ -10,13 +10,13 @@ The State management library for React
 import { Model } from 'react-ledom'
 
 // define state
-interface TestProps {
+interface TestState {
   value: number;
 }
 
 // define model
-class TestModel extends Model<TestProps> {
-  state: TestProps = {
+class TestModel extends Model<TestState> {
+  state: TestState = {
     value: Date.now()
   }
 
@@ -27,12 +27,12 @@ class TestModel extends Model<TestProps> {
   }
 }
 
-// create state
-const TestState = new TestModel();
+// create store
+const TestStore = new TestModel();
 
 const App = () => {
   return (
-    <Provider values={[TestState]}>
+    <Provider stores={[TestStore]}>
       <Test />
     </Provider>
   );
@@ -69,12 +69,12 @@ Every model has customized properties and methods.
 ```tsx
 import { Model } from "react-ledom";
 
-export interface TestProps {
+export interface TestState {
   value: number;
 }
 
-export default class Test1Model extends Model<TestProps> {
-  state: TestProps = {
+export default class Test1Model extends Model<TestState> {
+  state: TestState = {
     value: Date.now();
   }
 
@@ -85,7 +85,7 @@ export default class Test1Model extends Model<TestProps> {
   }
 }
 
-export const Test1State = new Test1Model();
+export const Test1Store = new Test1Model();
 ```
 
 ### Provider
@@ -99,7 +99,7 @@ import { Provider } from 'react-ledom'
 
 const Demo: FC = () => {
   return (
-    <Provider values={[state1, state2, ...]}>
+    <Provider stores={[store1, store2, ...]}>
       ...
     </Provider>
   )
@@ -166,7 +166,7 @@ const Test1or2: FC = () => {
         {test2 => (
           <>
             <h2>Test2</h2>
-            <p>value: {test2.value}</p>
+            <p>value: {test2.state.value}</p>
             <button onClick={() => {
               test2.refresh()
             }}>Refresh</button>
@@ -189,8 +189,8 @@ You can use other model instance's values and methods directly.
 
 ```tsx
 import { Model } from "react-ledom";
-import { Test1State } from "./Test1Model"
-import { Test2State } from "./Test2Model"
+import { Test1Store } from "./Test1Model"
+import { Test2Store } from "./Test2Model"
 
 export interface TestProps {
   value: number;
@@ -202,15 +202,15 @@ export default class Test3Model extends Model<TestProps> {
   }
   
   refresh = async () => {
-    // await fetch("xxx", Test1State.value)
-    // await fetch("xxx", Test2State.value)
+    // await fetch("xxx", Test1Store.value)
+    // await fetch("xxx", Test2Store.value)
 
-    await Test1State.refresh();
-    await Test2State.refresh();
+    await Test1Store.refresh();
+    await Test2Store.refresh();
   }
 }
 
-export const Test3State = new Test3Model();
+export const Test3Store = new Test3Model();
 ```
 
 ## Advance Concept

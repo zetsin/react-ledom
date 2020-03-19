@@ -1,11 +1,11 @@
 import { Model } from "../../../src";
 
-export interface Test1Props {
+export interface Test1State {
   value: number;
 }
 
-export default class Test1Model extends Model<Test1Props> {
-  state: Test1Props = {
+export default class Test1Model extends Model<Test1State> {
+  state: Test1State = {
     value: Date.now()
   }
 
@@ -16,4 +16,4 @@ export default class Test1Model extends Model<Test1Props> {
   }
 }
 
-export const Test1State = new Test1Model();
+export const Test1Store = new Test1Model();

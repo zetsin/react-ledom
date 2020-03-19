@@ -1,11 +1,11 @@
-import { Test1State } from './Test1Model'
-import { Test2State } from './Test2Model'
-import { Test3State } from './Test3Model'
-import { Test4State } from './Test4Model'
+import { Test1Store } from './Test1Model'
+import { Test2Store } from './Test2Model'
+import { Test3Store } from './Test3Model'
+import { Test4Store } from './Test4Model'
 
 export default [
-  Test1State,
-  Test2State,
-  Test3State,
-  Test4State
+  Test1Store,
+  Test2Store,
+  Test3Store,
+  Test4Store
 ]

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { render } from 'react-dom'
 import { Provider } from '../../src'
-import store from './models'
+import stores from './models'
 import Test1 from './components/test1'
 import Test2 from './components/test2'
 import Test1and2 from './components/test1and2'
@@ -11,7 +11,7 @@ import Test4 from './components/test4'
 
 const Demo: FC = () => {
   return (
-    <Provider values={store}>
+    <Provider stores={stores}>
       <Test1 />
       <hr />
       <Test2 />

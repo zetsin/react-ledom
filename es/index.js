@@ -15,7 +15,7 @@ var __assign = this && this.__assign || function () {
 };
 
 import React, { createContext, useContext, useState } from 'react';
-export var Store = new Map();
+export var Stores = new Map();
 
 var Model =
 /** @class */
@@ -26,7 +26,7 @@ function () {
     var _a;
 
     Object.assign(this.state, data);
-    (_a = Store.get(this.constructor)) === null || _a === void 0 ? void 0 : _a.setState(__assign({}, this));
+    (_a = Stores.get(this.constructor)) === null || _a === void 0 ? void 0 : _a.setState(__assign({}, this));
   };
 
   ;
@@ -45,7 +45,7 @@ var ContextProvider = function ContextProvider(_a) {
       state = _b[0],
       setState = _b[1];
 
-  Store.set(value.constructor, {
+  Stores.set(value.constructor, {
     context: context,
     setState: setState
   });
@@ -55,19 +55,19 @@ var ContextProvider = function ContextProvider(_a) {
 };
 
 export var Provider = function Provider(_a) {
-  var values = _a.values,
+  var stores = _a.stores,
       children = _a.children;
-  return values.map(function (value) {
+  return stores.map(function (store) {
     return {
-      context: createContext(value),
-      value: value
+      context: createContext(store),
+      store: store
     };
   }).reduce(function (acc, _a) {
     var context = _a.context,
-        value = _a.value;
+        store = _a.store;
     return React.createElement(ContextProvider, {
       context: context,
-      value: value
+      value: store
     }, acc);
   }, React.createElement(React.Fragment, null, children));
 };
@@ -77,7 +77,7 @@ export var Consumer = function Consumer(_a) {
 
   var _b;
 
-  var context = (_b = Store.get(model)) === null || _b === void 0 ? void 0 : _b.context;
+  var context = (_b = Stores.get(model)) === null || _b === void 0 ? void 0 : _b.context;
 
   if (!context) {
     return null;
@@ -88,7 +88,7 @@ export var Consumer = function Consumer(_a) {
 export var useModel = function useModel(model) {
   var _a;
 
-  var context = (_a = Store.get(model)) === null || _a === void 0 ? void 0 : _a.context;
+  var context = (_a = Stores.get(model)) === null || _a === void 0 ? void 0 : _a.context;
 
   if (!context) {
     throw Error("404");
